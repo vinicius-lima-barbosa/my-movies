@@ -51,14 +51,21 @@ export default async function MoviesList() {
             key={t._id}
             className="p-4 border border-slate-300 my-3 rounded-lg shadow-sm flex flex-col justify-between"
           >
-            <CardHeader>
-              <CardTitle className="text-xl font-bold mb-2">
+            <CardHeader className="flex-row mb-3">
+              <img
+                src={t.poster}
+                width="120"
+                height="177"
+                alt="poster"
+                className="border rounded-lg shadow-lg"
+              />
+              <CardTitle className="text-xl font-bold mb-2 ml-3">
                 {t.title}
+                <p className="text-sm text-gray-600">Genre: {t.genre}</p>
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-sm text-gray-600">Gênero: {t.genre}</p>
-              <p className="text-sm text-gray-600">Avaliação: {t.review}</p>
+            <CardContent className="flex-grow mb-1">
+              <p className="text-gray-600">Review: {t.review}</p>
             </CardContent>
             <CardFooter className="flex justify-between mt-2">
               <Link href={`/edit/${t._id}`}>
