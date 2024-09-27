@@ -12,7 +12,7 @@ export default function RemoveBtn({ id }) {
 
     if (confirmed) {
       const response = await fetch(
-        `http://localhost:3000/api/series?id=${id}`,
+        `http://localhost:3000/api/movies?id=${id}`,
         {
           method: "DELETE",
         }

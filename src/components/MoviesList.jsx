@@ -11,9 +11,9 @@ import Link from "next/link";
 import { PlusCircle } from "lucide-react";
 import RemoveBtn from "./RemoveBtn";
 
-const getSeriesMoviesData = async () => {
+const getMoviesData = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/series", {
+    const response = await fetch("http://localhost:3000/api/movies", {
       cache: "no-store",
     });
 
@@ -27,26 +27,26 @@ const getSeriesMoviesData = async () => {
   }
 };
 
-export default async function SeriesMoviesList() {
-  const seriesMoviesData = await getSeriesMoviesData();
+export default async function MoviesList() {
+  const moviesData = await getMoviesData();
 
-  if (!seriesMoviesData || !seriesMoviesData.series) {
-    return <p>Erro ao carregar os dados ou sem dados disponíveis</p>;
+  if (!moviesData || !moviesData.movies) {
+    return <p>Error while rendering data</p>;
   }
 
   return (
     <>
       <div className="mb-6 flex justify-between items-center ">
-        <h2 className="text-xl font-semibold">Lista de Filmes e Séries</h2>
+        <h2 className="text-xl font-semibold">Movies List</h2>
         <Link href="/post">
           <Button className="flex bg-black text-white hover:bg-zinc-800">
-            <PlusCircle className="mr-2 h-4 w-4" /> Adicionar Novo
+            <PlusCircle className="mr-2 h-4 w-4" /> Post New
           </Button>
         </Link>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {seriesMoviesData.series.map((t) => (
+        {moviesData.movies.map((t) => (
           <Card
             key={t._id}
             className="p-4 border border-slate-300 my-3 rounded-lg shadow-sm flex flex-col justify-between"
@@ -58,19 +58,7 @@ export default async function SeriesMoviesList() {
             </CardHeader>
             <CardContent className="flex-grow">
               <p className="text-sm text-gray-600">Gênero: {t.genre}</p>
-              {t.isSeries && (
-                <p className="text-sm text-gray-600">
-                  Episódios assistidos: {t.lastWatchedEpisode}/{t.totalEpisodes}
-                </p>
-              )}
-              {t.completed && (
-                <>
-                  <p className="text-sm text-green-600">
-                    <span className="text-gray-600">Status:</span> Concluído
-                  </p>
-                  <p className="text-sm text-gray-600">Avaliação: {t.review}</p>
-                </>
-              )}
+              <p className="text-sm text-gray-600">Avaliação: {t.review}</p>
             </CardContent>
             <CardFooter className="flex justify-between mt-2">
               <Link href={`/edit/${t._id}`}>

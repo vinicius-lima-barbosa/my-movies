@@ -1,5 +1,5 @@
-import SeriesMoviesList from "../components/SeriesMoviesList";
+import MoviesList from "../components/MoviesList.jsx";
 
 export default function Home() {
-  return <SeriesMoviesList />;
+  return <MoviesList />;
 }
