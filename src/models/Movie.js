@@ -1,24 +1,23 @@
 import mongoose, { Schema } from "mongoose";
 
-const movieSchema = new Schema(
-  {
-    title: {
-      type: String,
-      require: true,
-    },
-    genre: {
-      type: String,
-      require: true,
-    },
-    review: {
-      type: String,
-      required: true,
-    },
+const movieSchema = new Schema({
+  poster: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  title: {
+    type: String,
+    required: true,
+  },
+  genre: {
+    type: String,
+    required: true,
+  },
+  review: {
+    type: String,
+    required: true,
+  },
+});
 
 const Movie = mongoose.models.Movie || mongoose.model("Movie", movieSchema);
 
