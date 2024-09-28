@@ -55,13 +55,13 @@ export default function Post() {
     >
       <div>
         <Label
-          htmlFor="titulo"
+          htmlFor="title"
           className="block text-sm font-medium text-gray-700"
         >
           Title
         </Label>
         <Input
-          id="titulo"
+          id="title"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           required
@@ -71,13 +71,13 @@ export default function Post() {
 
       <div>
         <Label
-          htmlFor="genero"
+          htmlFor="genre"
           className="block text-sm font-medium text-gray-700"
         >
           Genre
         </Label>
         <Input
-          id="genero"
+          id="genre"
           onChange={(e) => setGenre(e.target.value)}
           value={genre}
           required

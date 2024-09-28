@@ -52,14 +52,7 @@ export default async function MoviesList() {
             className="p-4 border border-slate-300 my-3 rounded-lg shadow-sm flex flex-col justify-between"
           >
             <CardHeader className="flex-row mb-3">
-              <img
-                src={t.poster}
-                width="120"
-                height="177"
-                alt="poster"
-                className="border rounded-lg shadow-lg"
-              />
-              <CardTitle className="text-xl font-bold mb-2 ml-3">
+              <CardTitle className="text-xl font-bold mb-2">
                 {t.title}
                 <p className="text-sm text-gray-600">Genre: {t.genre}</p>
               </CardTitle>
