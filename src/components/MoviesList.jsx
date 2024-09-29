@@ -54,7 +54,7 @@ export default async function MoviesList() {
           >
             <CardHeader className="flex-row mb-3">
               <Image
-                src="https://static.wikia.nocookie.net/starwars/images/f/f7/SWEpisodeVTheEmpireStrikesBack-MarvelHC.jpg"
+                src={t.poster}
                 alt="Uploaded Poster"
                 width={120}
                 height={60}

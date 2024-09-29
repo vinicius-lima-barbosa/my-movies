@@ -11,18 +11,20 @@ export default function Post() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [review, setReview] = useState("");
+  const [posterURL, setPosterURL] = useState("");
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !genre || !review) {
+    if (!posterURL | !title || !genre || !review) {
       alert("Title and genre are required!");
       return;
     }
 
     const data = {
+      poster: posterURL,
       title,
       genre,
       review,
@@ -55,6 +57,23 @@ export default function Post() {
     >
       <div>
         <Label
+          htmlFor="poster"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Poster
+        </Label>
+        <Input
+          id="poster"
+          onChange={(e) => setPosterURL(e.target.value)}
+          value={posterURL}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the URL for the movie poster"
+        />
+      </div>
+
+      <div>
+        <Label
           htmlFor="title"
           className="block text-sm font-medium text-gray-700"
         >
@@ -66,6 +85,7 @@ export default function Post() {
           value={title}
           required
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the movie title"
         />
       </div>
 
@@ -82,6 +102,7 @@ export default function Post() {
           value={genre}
           required
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the movie genre(s)"
         />
       </div>
 
@@ -98,7 +119,7 @@ export default function Post() {
           value={review}
           type="text"
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          placeholder="Escreva sua crítica sobre o filme ou série"
+          placeholder="Type your review"
         />
       </div>
 

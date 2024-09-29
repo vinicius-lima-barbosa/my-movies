@@ -11,10 +11,13 @@ export default function EditCard({ movieID, initialData }) {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [review, setReview] = useState("");
+  const [posterURL, setPosterURL] = useState("");
+
   const router = useRouter();
 
   useEffect(() => {
     if (initialData) {
+      setPosterURL(initialData.movie.poster);
       setTitle(initialData.movie.title);
       setGenre(initialData.movie.genre);
       setReview(initialData.movie.review);
@@ -33,6 +36,7 @@ export default function EditCard({ movieID, initialData }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            poster: posterURL,
             title,
             genre,
             review,
@@ -58,31 +62,52 @@ export default function EditCard({ movieID, initialData }) {
     >
       <div>
         <Label
-          htmlFor="titulo"
+          htmlFor="poster"
           className="block text-sm font-medium text-gray-700"
         >
-          Title
+          Poster
         </Label>
         <Input
-          id="titulo"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
+          id="poster"
+          onChange={(e) => setPosterURL(e.target.value)}
+          value={posterURL}
+          required
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the URL for the movie poster"
         />
       </div>
 
       <div>
         <Label
-          htmlFor="genero"
+          htmlFor="title"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Title
+        </Label>
+        <Input
+          id="title"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the movie title"
+        />
+      </div>
+
+      <div>
+        <Label
+          htmlFor="genre"
           className="block text-sm font-medium text-gray-700"
         >
           Genre
         </Label>
         <Input
-          id="genero"
-          value={genre}
+          id="genre"
           onChange={(e) => setGenre(e.target.value)}
+          value={genre}
+          required
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Type the movie genre(s)"
         />
       </div>
 
@@ -95,10 +120,11 @@ export default function EditCard({ movieID, initialData }) {
         </Label>
         <Input
           id="review"
-          value={review}
           onChange={(e) => setReview(e.target.value)}
+          value={review}
+          type="text"
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          placeholder="Escreva sua crítica sobre o filme ou série"
+          placeholder="Type your review"
         />
       </div>
 

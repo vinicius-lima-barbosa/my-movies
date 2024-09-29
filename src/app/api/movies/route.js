@@ -10,11 +10,11 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    const { title, genre, review } = await request.json();
+    const { poster, title, genre, review } = await request.json();
 
-    if (!title || !genre || !review) {
+    if (!poster | !title || !genre || !review) {
       return NextResponse.json(
-        { message: "Title, genre and review are required" },
+        { message: "The poster, title, genre and review are required" },
         { status: 400 }
       );
     }
@@ -22,6 +22,7 @@ export async function POST(request) {
     await connectMongoDB();
 
     const newMovie = await Movie.create({
+      poster,
       title,
       genre,
       review,

@@ -1,6 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
 const movieSchema = new Schema({
+  poster: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,

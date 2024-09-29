@@ -4,11 +4,12 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request, { params }) {
   const { id } = params;
-  const { title, genre, review } = await request.json();
+  const { poster, title, genre, review } = await request.json();
   await connectMongoDB();
   await Movie.findByIdAndUpdate(
     id,
     {
+      poster,
       title,
       genre,
       review,
@@ -37,6 +38,7 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ message: "Movie not found" }, { status: 404 });
   }
 
+  movie.poster = updates.poster !== undefined ? updates.poster : movie.poster;
   movie.title = updates.title !== undefined ? updates.title : movie.title;
   movie.genre = updates.genre !== undefined ? updates.genre : movie.genre;
   movie.review = updates.review !== undefined ? updates.review : movie.review;
