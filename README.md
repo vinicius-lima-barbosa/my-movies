@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## My Movies 🎬
+
+This repository contains a CRUD application developed to manage movie reviews, including features for creating, reading, updating, and deleting reviews. The application allows users to upload their movie critiques and ratings. It was developed as an academic project for a university course. Built using [include stack used, such as Next.js, Node.js, etc.], the focus is on simplicity and functionality for data handling.
