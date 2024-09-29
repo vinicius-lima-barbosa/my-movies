@@ -10,6 +10,7 @@ import { Edit } from "lucide-react";
 import Link from "next/link";
 import { PlusCircle } from "lucide-react";
 import RemoveBtn from "./RemoveBtn";
+import Image from "next/image";
 
 const getMoviesData = async () => {
   try {
@@ -49,17 +50,26 @@ export default async function MoviesList() {
         {moviesData.movies.map((t) => (
           <Card
             key={t._id}
-            className="p-4 border border-slate-300 my-3 rounded-lg shadow-sm flex flex-col justify-between"
+            className="p-4 border border-slate-300 my-3 rounded-lg shadow-sm justify-between"
           >
             <CardHeader className="flex-row mb-3">
-              <CardTitle className="text-xl font-bold mb-2">
-                {t.title}
-                <p className="text-sm text-gray-600">Genre: {t.genre}</p>
+              <Image
+                src="https://static.wikia.nocookie.net/starwars/images/f/f7/SWEpisodeVTheEmpireStrikesBack-MarvelHC.jpg"
+                alt="Uploaded Poster"
+                width={120}
+                height={60}
+                className="rounded-md shadow-lg"
+              />
+              <CardTitle className="ml-3">
+                <p className="font-bold text-2xl">{t.title}</p>
+                <p className="text-sm text-gray-600">{t.genre}</p>
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex-grow mb-1">
-              <p className="text-gray-600">Review: {t.review}</p>
+
+            <CardContent className="mb-2">
+              <p className="text-gray-800 text-justify">Review: {t.review}</p>
             </CardContent>
+
             <CardFooter className="flex justify-between mt-2">
               <Link href={`/edit/${t._id}`}>
                 <Button
