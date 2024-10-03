@@ -132,6 +132,7 @@ export default function Post() {
           onChange={(e) => setReview(e.target.value)}
           value={review}
           type="text"
+          required
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           placeholder="Type your review"
         />
