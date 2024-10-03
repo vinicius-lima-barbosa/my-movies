@@ -24,8 +24,22 @@ export default function EditCard({ movieID, initialData }) {
     }
   }, [initialData]);
 
+  const isValidURL = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isValidURL(posterURL)) {
+      alert("Please enter a valid URL for the poster.");
+      return;
+    }
 
     try {
       const response = await fetch(
