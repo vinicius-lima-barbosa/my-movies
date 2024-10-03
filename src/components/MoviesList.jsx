@@ -60,6 +60,7 @@ export default async function MoviesList() {
                 height={60}
                 className="rounded-md shadow-lg"
               />
+
               <CardTitle className="ml-3">
                 <p className="font-bold text-2xl">{t.title}</p>
                 <p className="text-sm text-gray-600">{t.genre}</p>

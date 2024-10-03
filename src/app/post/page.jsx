@@ -15,8 +15,22 @@ export default function Post() {
 
   const router = useRouter();
 
+  const isValidURL = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isValidURL(posterURL)) {
+      alert("Please enter a valid URL for the poster.");
+      return;
+    }
 
     if (!posterURL | !title || !genre || !review) {
       alert("Title and genre are required!");
