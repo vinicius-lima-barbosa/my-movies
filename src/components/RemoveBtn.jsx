@@ -10,17 +10,21 @@ export default function RemoveBtn({ id }) {
   const removeTopic = async () => {
     const confirmed = confirm("Are you sure?");
 
-    if (confirmed) {
-      const response = await fetch(
-        `http://localhost:3000/api/movies?id=${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+    try {
+      if (confirmed) {
+        const response = await fetch(
+          `http://localhost:3000/api/movies?id=${id}`,
+          {
+            method: "DELETE",
+          }
+        );
 
-      if (response.ok) {
-        router.refresh();
+        if (response.ok) {
+          router.refresh();
+        }
       }
+    } catch (error) {
+      console.log(`Error: ${error}`);
     }
   };
 

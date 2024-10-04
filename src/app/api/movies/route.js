@@ -3,9 +3,17 @@ import Movie from "@/src/models/Movie.js";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await connectMongoDB();
-  const movies = await Movie.find();
-  return NextResponse.json({ movies });
+  try {
+    await connectMongoDB();
+    const movies = await Movie.find();
+    return NextResponse.json({ movies });
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    return NextResponse.json(
+      { message: "Failed to fetch movies" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(request) {
@@ -39,8 +47,32 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  const id = request.nextUrl.searchParams.get("id");
-  await connectMongoDB();
-  await Movie.findByIdAndDelete(id);
-  return NextResponse.json({ message: "Movie deleted" }, { status: 200 });
+  try {
+    const id = request.nextUrl.searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        { message: "Movie ID is required" },
+        { status: 400 }
+      );
+    }
+
+    await connectMongoDB();
+    const deletedMovie = await Movie.findByIdAndDelete(id);
+
+    if (!deletedMovie) {
+      return NextResponse.json({ message: "Movie not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      { message: "Movie deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error deleting movie:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }
