@@ -32,7 +32,7 @@ export default function Post() {
       return;
     }
 
-    if (!posterURL | !title || !genre || !review) {
+    if (!posterURL || !title || !genre || !review) {
       alert("Title and genre are required!");
       return;
     }

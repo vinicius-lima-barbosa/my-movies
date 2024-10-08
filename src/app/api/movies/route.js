@@ -20,7 +20,7 @@ export async function POST(request) {
   try {
     const { poster, title, genre, review } = await request.json();
 
-    if (!poster | !title || !genre || !review) {
+    if (!poster || !title || !genre || !review) {
       return NextResponse.json(
         { message: "The poster, title, genre and review are required" },
         { status: 400 }
