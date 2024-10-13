@@ -9,7 +9,7 @@ export async function PUT(request, { params }) {
 
     if (!poster || !title || !genre || !review) {
       return NextResponse.json(
-        { message: "The poster, title, genre, and review are required" },
+        { message: "All fields are required" },
         { status: 400 }
       );
     }
@@ -69,7 +69,6 @@ export async function PATCH(request, { params }) {
       return NextResponse.json({ message: "Movie not found" }, { status: 404 });
     }
 
-    // Atualiza apenas os campos que foram passados
     movie.poster = updates.poster !== undefined ? updates.poster : movie.poster;
     movie.title = updates.title !== undefined ? updates.title : movie.title;
     movie.genre = updates.genre !== undefined ? updates.genre : movie.genre;

@@ -22,7 +22,7 @@ export async function POST(request) {
 
     if (!poster || !title || !genre || !review) {
       return NextResponse.json(
-        { message: "The poster, title, genre and review are required" },
+        { message: "All fields are required" },
         { status: 400 }
       );
     }
