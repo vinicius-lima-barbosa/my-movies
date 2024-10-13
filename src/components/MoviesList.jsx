@@ -41,7 +41,7 @@ export default async function MoviesList() {
         <h2 className="text-xl font-semibold">Movies List</h2>
         <Link href="/post">
           <Button className="flex bg-black text-white hover:bg-zinc-800">
-            <PlusCircle className="mr-2 h-4 w-4" /> Post New
+            <PlusCircle className="mr-2 h-4 w-4" /> New Post
           </Button>
         </Link>
       </div>
